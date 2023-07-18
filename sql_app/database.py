@@ -10,11 +10,11 @@ SQLALCHEMY_DATABASE_URL = "postgresql://postgres:passw0rd1!@192.168.1.100:15432/
 #session local(db session) vs session (sqlalchemy)
 engine = create_engine(
     # SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False} # only for SQLite
-    SQLALCHEMY_DATABASE_URL # for postgres
+    SQLALCHEMY_DATABASE_URL , echo=True # for postgres
 
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # later imported from model
-# returns a class
+# returns a class"
 Base = declarative_base()
