@@ -7,6 +7,7 @@ from .database import Base
 
 class User(Base):
     __tablename__ = "users"
+    __table_args__ = {"schema": "demo"}
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True)
@@ -18,10 +19,11 @@ class User(Base):
 
 class Item(Base):
     __tablename__ = "items"
+    __table_args__ = {"schema": "demo"}
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     description = Column(String, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
+    owner_id = Column(Integer, ForeignKey("demo.users.id"))
 
     owner = relationship("User", back_populates="items")
